@@ -19,8 +19,8 @@ class Header extends Component {
     renderLinks(){
         if(this.props.authenticated){
             return[
-                <li className="nav-item pull-xs-left" key={2}>
-                    <Link className="nav-item nav-link" to="/post/add">New Post</Link>
+                <li className="nav-item float-xs-left" key={2}>
+                    <Link className="nav-item nav-link" to="/post/add">New Poll</Link>
                 </li>,
                 <li className="nav-item pull-xs-right" key={3}>
                     <Link className="nav-item nav-link" to="/logout">Logout</Link>

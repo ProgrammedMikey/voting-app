@@ -13,6 +13,14 @@ Route::get('/', function (){
 Route::group(['prefix' => 'api'], function(){
     Route::resource('posts', 'PostController');
 
+    Route::resource('option', 'OptionController', [
+        'only' => ['index','store', 'show']
+    ]);
+
+    Route::resource('poll', 'PollController', [
+        'only' => ['index','store', 'show']
+    ]);
+
     Route::get('userinfo', function () {
         return JWTAuth::parseToken()->authenticate();
     });
@@ -23,6 +31,19 @@ Route::group(['prefix' => 'api'], function(){
 
     Route::post('login',[
         'uses' => 'AuthenticateController@authenticate'
+    ]);
+
+});
+
+Route::group(['prefix' => 'api'], function(){
+
+
+    Route::post('user',[
+        'uses' => 'AuthController@store'
+    ]);
+
+    Route::post('user/signin',[
+        'uses' => 'AuthController@signin'
     ]);
 
 });
