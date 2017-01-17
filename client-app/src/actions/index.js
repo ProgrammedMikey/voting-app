@@ -52,13 +52,14 @@ export function registerUser({email,password}){
     }
 }
 
-export function addPost({title,body}){
+export function addPost({title,options}){
   return function(dispatch){
-    axios.post(`${ROOT_URL}/api/posts`,{title,body},
+    axios.post(`${ROOT_URL}/api/poll`,{title,options},
       {
       headers:{authorization:`Bearer`+localStorage.getItem('token')}
     })
     .then(response => {
+        console.log(response);
       dispatch({
         type:ADD_POST,
         payload:response

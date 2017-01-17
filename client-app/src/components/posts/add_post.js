@@ -7,11 +7,12 @@ import {browserHistory} from 'react-router';
 class AddPost extends Component {
     static contextTypes = {
         router:React.PropTypes.object
-}; 
+};
 
 handleFormSubmit(formProps){
+    // console.log(formProps);
 this.props.addPost(formProps);
-this.context.router.push('/posts');
+this.context.router.push('/');
 }
     render(){
       const {handleSubmit,fields:{title,options}} = this.props;
@@ -25,23 +26,26 @@ this.context.router.push('/posts');
                   {title.touched && title.error && <div className="text-danger">{title.error}</div>}
                   </fieldset>
 
-                    <button className="btn btn-primary" onClick={() => options.addField()}>Add Option</button>
+                    <button className="btn btn-primary" onClick={(event) => {
+                    event.preventDefault()
+                    options.addField()}}>Add Option</button>
 
                         <ul className="list-unstyled mildTopSpacer">
-                            {options.map((option, index) => <li className="mildTopSpacer" key={index}>
+                            {options.map((option, index) => (index < 5 ) ? <li className="mildTopSpacer" key={index}>
                                 <div className="input-group">
                                 <label htmlFor="award">Option #{index + 1}</label>
-                                <input type="text" {...option.input} className="form-control" placeholder="Enter vote option"/>
-                                    {option.touched && option.error && <div className="text-danger">{option.error}</div>}
+                                <input type="text" {...option} className="form-control" placeholder="Enter vote option"/>
+                                    {option.touched && option.error && <div className="text-danger">Must choose at least 2 options!</div>}
                                 <span className="input-group-btn">
-                                    <button className="btn btn-danger topSpacer" onClick={() => {
-                  options.removeField(index) // remove from awardIndex
-                }}>Remove Option</button>
+                                    <button className="btn btn-danger topSpacer" onClick={(event) => {
+                                    event.preventDefault()
+                                     options.removeField(index)
+                                     }}>Remove Option</button>
                                 </span>
 
                                     </div>
 
-                            </li>)}
+                            </li> : "")}
                         </ul>
 
 
@@ -58,10 +62,10 @@ this.context.router.push('/posts');
 function validate(formProps){
 const errors = {};
 if(! formProps.title){
- errors.title = "Title is required";   
+ errors.title = "Title is required";
 }
-if(! formProps.option){
-    errors.option = "Book Url is required";
+if(formProps.options.length < 2){
+    errors.options = "Option is required";
 }
 return errors;
 }

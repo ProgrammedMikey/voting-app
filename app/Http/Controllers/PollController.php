@@ -35,19 +35,19 @@ class PollController extends Controller
         $user_id = $user-> id;
 
         $poll = Poll::create([
-            'question' => $request->input('question'),
+            'question' => $request->input('title'),
             'user_id' => $user_id
         ]);
 
-        $input = Input::all();
-        $condition = $request->input('option');
-        for($id = 0; $id<$condition; $id++){
-            $option = new Option;
-            $option->option = $input['option'][$id];
-            $option->save();
-        }
+//        $input = Input::all();
+//        $condition = $request->input('options');
+//        for($id = 0; $id<$condition; $id++){
+//            $option = new Option;
+//            $option->option = $input['options'][$id];
+//            $option->save();
+//        }
 
-        $option = $request->input('option');
+        $option = $request->input('options');
         $options = [];
         for ($i = 0; $i < count($option); $i++) {
             $options[] = new  Option([
