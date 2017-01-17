@@ -32,6 +32,9 @@ Route::group(['prefix' => 'api'], function(){
     Route::post('login',[
         'uses' => 'AuthenticateController@authenticate'
     ]);
+    Route::post('option/{id}', [
+        'uses' => 'OptionController@incrementVote'
+    ]);
 
 });
 

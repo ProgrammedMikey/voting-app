@@ -9,29 +9,44 @@ class PostsShow extends Component{
     componentWillMount(){
     this.props.PostShow(this.props.params.id);
     }
-    handleDeleteClick(){
-        this.props.deletePost(this.props.params.id);
-             this.context.router.push('/posts');
-        }
-    handleDeletePost() {
-            if(this.props.authenticated){
-                return (                
-       <button onClick={this.handleDeleteClick.bind(this)} className="btn btn-danger pull-xs-right">Delete</button>
-                );
-            }
+
+    handleVoteClick(option){
+        this.props.votePoll(option.id);
+        // console.log( this.props.votePoll(option.id));
+        this.context.router.push('/');
     }
+
     renderPost(post){
-        if(post){
+        // console.log(post);
+        return post.map((posts) => {
         return (
             <div>
-            <h3>{post.title}</h3>
-
-            <p>{post.body}</p>
-                <br/>
-                {this.handleDeletePost()}
+                <header className="hero-unit">
+                <div className="container">
+        <div className="row">
+            <div class="col-md-12">
+            <h3>{posts.question}</h3>
             </div>
+                    </div>
+                    </div>
+                   </header>
+
+                <div className="options-contain">
+                    <h3 className="defaultColor"> Submit a vote</h3>
+                    {posts.options.map(option =>
+                        <div className="poll-choice" onClick={this.handleVoteClick.bind(this, option)}>
+
+                            {option.option}
+                        </div>
+                    )}
+                </div>
+
+
+            </div>
+
+
                );
-        }
+        });
     }
     render(){
         const {post,loading,error} = this.props.activePost;

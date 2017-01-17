@@ -49,7 +49,7 @@ this.context.router.push('/');
                         </ul>
 
 
-                 <button className="btn btn-success">Submit</button>
+                 <button className="btn btn-success">Create Poll</button>
                 </form>
           </div>
           </div>

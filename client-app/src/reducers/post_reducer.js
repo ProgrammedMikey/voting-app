@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     newPost:{post:null,error:null,loading:false},
     deletedPost:{post:null,error:null,loading:false},
     editPost:{post:null,error:null,loading:false},
-    activePost:{post:null,error:null,loading:false},
+    activePost:{post:[],error:null,loading:false},
     updatePost:{post:null,error:null,loading:false},
 };
 
@@ -18,7 +18,7 @@ export default function (state = INITIAL_STATE,action){
       case FETCH_POST_SUCCESS:
         return { ...state, postsList:{posts:action.payload.data,error:null,loading:false}};
       case POST_SHOW:
-        return {...state,activePost:{post:null,error:null,loading:true}};  
+        return {...state,activePost:{post:[],error:null,loading:true}};
       case POST_SHOW_SUCCESS:
         return {...state,activePost:{post:action.payload.data,error:null,loading:false}};  
       case EDIT_POST:

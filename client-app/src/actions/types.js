@@ -14,3 +14,4 @@ export const AUTH_USER_INFO = "AUTH_USER_INFO";
 export const UPDATE_POST_SUCCESS = "UPDATE_POST_SUCCESS";
 export const USER_INFO = "USER_INFO";
 export const USER_INFO_SUCCESS = "USER_INFO_SUCCESS";
+export const VOTE_POLL = "VOTE_POLL";

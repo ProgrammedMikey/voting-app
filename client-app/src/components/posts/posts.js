@@ -11,28 +11,18 @@ class Posts extends Component {
   this.props.userInfo();
   }
 
-  handleEditButton(post) {
-      if(this.props.authenticated){
-      return ( 
-            <Link  className="pull-xs-right btn btn-warning btn-sm" to ={"posts/"+post.id+"/edit"}>Edit</Link>
-             );
-      }
-  }
 
  renderPosts(posts) {
 
     return posts.map((post) => {
       return (
+          <ul className="list-group col-md-12">
 
-        <div className="card col-md-3 col-sm-6 text-xs-center">
             <Link to={"posts/"+post.id}>
-            <img className="card-img-top" src={post.body} alt="Book image" height="230" width="230"> </img>
+                <li className="list-group-item list-group-item-action backColor" key={post.id}><center>{ post.question }</center></li>
             </Link>
-            <div className="card-block">
-            <h4 className="card-title"><center>{ post.title }</center></h4>
-        </div>
-            {this.handleEditButton(post)}
-        </div>
+
+          </ul>
       );
     });
   }

@@ -39,20 +39,12 @@ class PollController extends Controller
             'user_id' => $user_id
         ]);
 
-//        $input = Input::all();
-//        $condition = $request->input('options');
-//        for($id = 0; $id<$condition; $id++){
-//            $option = new Option;
-//            $option->option = $input['options'][$id];
-//            $option->save();
-//        }
-
         $option = $request->input('options');
         $options = [];
         for ($i = 0; $i < count($option); $i++) {
             $options[] = new Option([
                 'option' => $option[$i],
-                'votes' => 1
+                'votes' => 0
             ]);
         }
         
@@ -65,9 +57,17 @@ class PollController extends Controller
 
     public function show($id)
     {
-        $poll = Poll::find($id);
+        $poll = Poll::with('options')->where('id', '=', $id)->get();
+//        dd($poll);
+//        $poll = Poll::find($id);
         return response()->json($poll,200);
     }
+
+//    public function incrementVote($id){
+//        $option = Option::find($id);
+//        $option->votes = ($option->votes + 1);
+//        $option->save();
+//    }
 
 
 //    public function edit($id)
