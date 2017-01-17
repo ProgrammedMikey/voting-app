@@ -7,6 +7,7 @@ class Login extends Component{
   handleFormSubmit({email,password}){
 
     this.props.loginUser({email,password});
+      
   }
 
     componentWillMount(){

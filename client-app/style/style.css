@@ -121,5 +121,16 @@ footer {
   text-align: center;
 }
 
+.topSpacer{
+  margin-top: 31px;
+}
+
+.mdPadding {
+  padding: 5%;
+}
+
+.mildTopSpacer{
+  margin-top: 10px;
+}
 
 
