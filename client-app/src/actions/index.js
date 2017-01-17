@@ -1,8 +1,8 @@
 import axios from 'axios';
 import jwtdecode from 'jwt-decode';
 import {browserHistory} from 'react-router';
-import {AUTH_USER,AUTH_ERROR,LOGOUT_USER,FETCH_POST,ADD_POST,POST_SHOW,DELETE_POST,EDIT_POST,
-    UPDATE_POST,FETCH_POST_SUCCESS,EDIT_POST_SUCCESS,POST_SHOW_SUCCESS,UPDATE_POST_SUCCESS,VOTE_POLL,
+import {AUTH_USER,AUTH_ERROR,LOGOUT_USER,FETCH_POST,ADD_POST,POST_SHOW,
+    FETCH_POST_SUCCESS,POST_SHOW_SUCCESS,VOTE_POLL,
 USER_INFO_SUCCESS,USER_INFO} from './types';
 const ROOT_URL = 'http://voting-app.dev';
 export function loginUser({email,password}){
@@ -108,60 +108,6 @@ export function postShowSuccess(post){
     };
 }
 
-export function EditPost(id){
-    return dispatch =>{
-        dispatch({type:EDIT_POST});  
-      axios.get(`${ROOT_URL}/api/posts/${id}/edit`,{
-       headers: { authorization: localStorage.getItem('token') }
-      })
-        .then(response =>{
-            dispatch(editPostSuccess(response))
-        })
-    }
-}
-export function editPostSuccess(posts){
-    return {
-        type:EDIT_POST_SUCCESS,
-        payload:posts  
-    };
-}
-
-export function updatePost(id,{title,body}){
-  return dispatch =>{
-    dispatch({type:UPDATE_POST}); 
-    axios.put(`${ROOT_URL}/api/posts/${id}`,{title,body},
-      {
-      headers:{authorization:localStorage.getItem('token')}
-    })
-    .then(response => {
-        dispatch(updatePostSuccess(response));
-  });
-}
-}
-export function updatePostSuccess(post){
-    return {
-        type:UPDATE_POST_SUCCESS,
-        response:post
-    }
-}
-
-
-
-
-export function deletePost(id){
-    return function(dispatch){
-      axios.delete(`${ROOT_URL}/api/posts/${id}`,{
-       headers: { authorization: localStorage.getItem('token') }
-      })
-        .then(response =>{
-            dispatch({
-              type:DELETE_POST,
-              payload:response
-            });
-        })
-
-    }
-}
 
 export function authError(error){
     return {
