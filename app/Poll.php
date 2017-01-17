@@ -10,6 +10,6 @@ class Poll extends Model
     protected  $fillable = ['id','question', 'user_id'];
 
     public function options() {
-        return $this->hasMany('Option');
+        return $this->hasMany('App\Option');
     }
 }

@@ -50,8 +50,9 @@ class PollController extends Controller
         $option = $request->input('options');
         $options = [];
         for ($i = 0; $i < count($option); $i++) {
-            $options[] = new  Option([
+            $options[] = new Option([
                 'option' => $option[$i],
+                'votes' => 1
             ]);
         }
         

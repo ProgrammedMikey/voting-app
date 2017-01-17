@@ -13,7 +13,7 @@ export function loginUser({email,password}){
             payload:response.data.token             
           });
           localStorage.setItem('token',response.data.token);
-          browserHistory.push("/posts");
+          browserHistory.push("/");
         })
 
         .catch(()=>{
