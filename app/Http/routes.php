@@ -38,13 +38,6 @@ Route::group(['prefix' => 'api'], function(){
 
 });
 
-Route::post('user',[
-        'uses' => 'AuthController@store'
-    ]);
-
-Route::post('user/signin',[
-        'uses' => 'AuthController@create'
-    ]);
 
 
 
