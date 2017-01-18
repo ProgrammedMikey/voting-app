@@ -15,7 +15,7 @@ class AuthenticateController extends Controller
     {
         $this->validate($request, [
             'email' => 'required|email',
-            'password' => 'required|min:5'
+            'password' => 'required|min:5',
         ]);
 
         $email = $request->input('email');
@@ -23,7 +23,8 @@ class AuthenticateController extends Controller
 
         $user = new User([
             'email' => $email,
-            'password' => bcrypt($password)
+            'password' => bcrypt($password),
+            'name' => 'foo'
         ]);
 
         if ($user->save()) {
