@@ -1,43 +1,15 @@
-# React-Redux-Laravel#
+Basejumps: Build a Voting App https://mdasilva-pollingapp.herokuapp.com/
 
-Boilerplate blog application for a Laravel JWT Backend and a React/Redux Front-End with Bootstrap 4.
+User Story: As an authenticated user, I can keep my polls and come back later to access them.
 
-* Laravel 5.2
-* React
-* Redux
-* React-Router
-* Babel 6
-* Redux-Form
-* Webpack
+User Story: As an authenticated user, I can share my polls with my friends.
 
-![screenshot](https://github.com/onerciller/react-redux-laravel/blob/master/public/img.png)
+User Story: As an authenticated user, I can see the aggregate results of my polls.
 
-##Installation
+User Story: As an authenticated user, I can delete polls that I decide I don't want anymore.
 
-### Laravel
-```sh
-$ composer update
-$ php artisan migrate 
+User Story: As an authenticated user, I can create a poll with any number of possible items.
 
-```
+Bonus User Story: As an unauthenticated user, I can see everyone's polls, but I can't vote on anything.
 
-### Install Front-End Requirements
-```sh
-$ cd client-app
-$ npm install
-```
-
-### Run Back-End
-
-```sh
-$ php artisan serve
-```
-
-
-### Run Front-End
-
-```sh
-$ cd client-app
-$ npm start
-```
- 
+Bonus User Story: As an unauthenticated or authenticated user, I can see the results of polls in chart form. (This could be implemented using Chart.js or Google Charts.)
