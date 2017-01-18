@@ -24,7 +24,7 @@ class AuthenticateController extends Controller
         $user = new User([
             'email' => $email,
             'password' => bcrypt($password),
-            'name' => 'foo'
+            'name' => 'Welcome'
         ]);
 
         if ($user->save()) {
