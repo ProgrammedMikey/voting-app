@@ -17,19 +17,7 @@ class ChartShow extends Component{
     }
 
     renderPost(post){
-         console.log(post);
-
-         // post.map((posts) => {
-         //
-         //    var chartOptions = [ ];
-         //    var chartVotes = [ ];
-         //
-         //    for (var i = 0; i < posts.options.length; i++) {
-         //        chartOptions.push(posts.options[i].option);
-         //        chartVotes.push(posts.options[i].votes);
-         //    }
-         //    console.log(chartOptions);
-         // });
+         // console.log(post);
 
         var chartOptions = [ ];
         var chartVotes = [ ];
@@ -44,8 +32,29 @@ class ChartShow extends Component{
 
         let chartData = {
             labels: chartOptions,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
             datasets: [
                 {
+                    label: "My First dataset",
+                    fillColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    strokeColor: "rgba(220,220,220,0.8)",
+                    highlightFill: "rgba(220,220,220,0.75)",
+                    highlightStroke: "rgba(220,220,220,1)",
+                    borderWidth: 1,
                     data: chartVotes
                 }
             ]
@@ -62,11 +71,24 @@ class ChartShow extends Component{
              }
 
             return (
+
                 <div>
+                    <header className="hero-unit">
+                        <div className="container">
+                            <div className="row">
+                                <div class="col-md-12">
+                                    {post.map((posts) =>
+                                        <h3>{posts.question}</h3>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </header>
 
 
-                    <BarChart data={chartData} options={chartOption} width="600" height="250" redraw/>
-
+                    <div className="options-contain">
+                    <BarChart data={chartData}  width="800" height="450" redraw/>
+</div>
                 </div>
             );
 
