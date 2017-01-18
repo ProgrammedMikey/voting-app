@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import * as thunkMiddleware from 'redux-thunk';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
+import {Link} from 'react-router';
+
 class PostsShow extends Component{
     static contextTypes= {
         router:PropTypes.object
@@ -13,7 +15,7 @@ class PostsShow extends Component{
     handleVoteClick(option){
         this.props.votePoll(option.id);
         // console.log( this.props.votePoll(option.id));
-        this.context.router.push('/');
+        this.context.router.push('/posts/chart/'+this.props.params.id);
     }
 
     renderPost(post){

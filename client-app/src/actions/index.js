@@ -45,7 +45,7 @@ export function registerUser({email,password}){
           .then(response =>{
             dispatch({type:AUTH_USER});
             localStorage.setItem('token',response.data.token);
-            browserHistory.push('/posts');
+            browserHistory.push('/');
           })
           .catch(response => dispatch(authError(response.data.error)));
 
