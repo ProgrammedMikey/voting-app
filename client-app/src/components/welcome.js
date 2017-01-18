@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import Posts from './posts/posts';
 
 export default () => <div>
-        <header className="jumbotron jumbotron-fluid hero-spacer">
+        <header className="jumbotron jumbotron-fluid hero-spacer jumboColor">
                 <div class="container">
                 <h1 className="display-3">Voting App</h1>
                 <p className="lead">Select a poll to see the results and vote, or sign-in to make a new poll.</p>

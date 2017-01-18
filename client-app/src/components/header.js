@@ -19,21 +19,21 @@ class Header extends Component {
     renderLinks(){
         if(this.props.authenticated){
             return[
-                <li className="nav-item float-xs-left" key={2}>
-                    <Link className="nav-item nav-link" to="/post/add">New Poll</Link>
+                <li className="nav-item float-xs-left defaultColor" key={2}>
+                    <Link className="nav-item nav-link defaultColor" to="/post/add">New Poll</Link>
                 </li>,
-                <li className="nav-item pull-xs-right" key={3}>
-                    <Link className="nav-item nav-link" to="/logout">Logout</Link>
+                <li className="nav-item pull-xs-right defaultColor" key={3}>
+                    <Link className="nav-item nav-link defaultColor" to="/logout">Logout</Link>
                 </li>,
 
             ];
         }else{
             return [
-                <li className="nav-item float-md-right" key={2}>
-                    <Link className="nav-link" to="/register">&nbsp;Register</Link>
+                <li className="nav-item float-md-right defaultColor" key={2}>
+                    <Link className="nav-link defaultColor" to="/register">&nbsp;Register</Link>
                 </li>,
-                <li className="nav-item float-md-right" key={1}>
-                    <Link className="nav-link" to="/login">Login</Link>
+                <li className="nav-item float-md-right defaultColor" key={1}>
+                    <Link className="nav-link defaultColor" to="/login">Login</Link>
                 </li>
             ];
         }
@@ -42,9 +42,9 @@ class Header extends Component {
     render (){
         console.log(this.props.userinfo);
         return (
-            <div>
-                <Navbar className="navbar navbar-dark bg-inverse" light>
-                <Link to="/" className="navbar-brand">Voting App</Link>
+
+                <Navbar className="navbar sticky-top navbar-light bg-faded navbarStyle">
+                <Link to="/" className="navbar-brand brandColor">Voting App</Link>
                     <Nav className="float-right" navbar>
                 <ul className="nav navbar-nav">
                     {this.renderLinks()}
@@ -53,7 +53,7 @@ class Header extends Component {
                 </ul>
                         </Nav>
                 </Navbar>
-            </div>
+
         )
 
     }
